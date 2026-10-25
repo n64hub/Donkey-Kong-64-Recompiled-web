@@ -93,8 +93,8 @@ and nothing reaches it. RT64's render to RAM stays on, as the game reads its own
 frames: a Banana Fairy photo is a 160x128 patch of the frame on screen that the CPU copies out of RDRAM
 (`func_global_asm_806FFF88`, patched in `patches/patches_heap.c`), and without render to RAM nothing draws the frame
 there, so the photo would show whatever the memory last held. On the page RT64 copies each frame into RDRAM a list
-late (`recompui::renderer::set_render_to_ram_late`): the copy lands when the next list starts, or at a VI once the GPU
-has it, so a list doesn't wait for the GPU process to hand the frame back. In headless Chrome 155 on an RTX 2070, through
+late (`recompui::renderer::set_render_to_ram_late`): the copy lands once the GPU has it, while the next list is drawn
+at the latest, so a list doesn't wait for the GPU process to hand the frame back. In headless Chrome 155 on an RTX 2070, through
 the menus and walking about DK Isles, a list takes 3.7 ms (median, two runs) against 7.8 ms with the copy made before
 the list ends. The photo then holds the frame a list or two earlier, which shows only while the camera turns. Before
 the game starts, every VI draws a dummy frame into 0x80700000 or 0x80725800, where the game's main code and audio
