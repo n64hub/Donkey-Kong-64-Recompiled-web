@@ -192,7 +192,3 @@ code and audio microcode: there the page never booted, logging `Failed to execut
 `RuntimeError: index out of bounds` in the wasm 22-27 s in, with nothing drawn and the sound dry. A preload that holds
 `onSubmittedWorkDone` back 100 ms reproduces it in Firefox on any GPU, at the same wasm offset in three boots of three,
 and with 75fe596 the page boots through it and plays into Frantic Factory.
-
-How the page plays, in each browser and build, is recorded in N64Recomp-browser's
-[`plays.jsonl`](https://github.com/n64hub/N64Recomp-browser/blob/main/plays.jsonl) and its
-[games table](https://github.com/n64hub/N64Recomp-browser#games).
